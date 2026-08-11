@@ -1,0 +1,17 @@
+HorasGastasCliente= 
+CALCULATE(
+    SUMX(
+        movidesk,
+        DATEDIFF(
+            movidesk[aptStart],
+            movidesk[aptEnd],
+            MINUTE
+        )
+    ),
+    movidesk[clientes] = "Cliente",
+    FILTER(
+        movidesk,
+        movidesk[aptDate] >= DATE(YEAR(TODAY()), MONTH(TODAY()), 1)
+            && movidesk[aptDate] < EOMONTH(TODAY(), 0) + 1
+    )
+)
