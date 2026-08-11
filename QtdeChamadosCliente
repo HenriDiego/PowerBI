@@ -1,0 +1,11 @@
+QtdeChamadosCliente = 
+VAR Resultado =
+    CALCULATE(
+        DISTINCTCOUNT(movidesk[id]),
+        movidesk[clientes] = "Cliente",
+        movidesk[aptDate] >= DATE(YEAR(TODAY()), MONTH(TODAY()), 1),
+        movidesk[aptDate] < EOMONTH(TODAY(), 0) + 1
+    )
+
+RETURN
+IF(Resultado = 0, BLANK(), Resultado)
