@@ -1,17 +1,20 @@
-HorasGastasCliente= 
-CALCULATE(
-    SUMX(
-        movidesk,
-        DATEDIFF(
-            movidesk[aptStart],
-            movidesk[aptEnd],
-            MINUTE
+HorasGastasCliente =
+ROUND(
+    CALCULATE(
+        SUMX(
+            movidesk,
+            DATEDIFF(
+                movidesk[aptStart],
+                movidesk[aptEnd],
+                MINUTE
+            ) / 60
+        ),
+        movidesk[clientes] = "Cleinte",
+        FILTER(
+            movidesk,
+            movidesk[aptDate] >= DATE(YEAR(TODAY()), MONTH(TODAY()), 1)
+                && movidesk[aptDate] < EOMONTH(TODAY(), 0) + 1
         )
     ),
-    movidesk[clientes] = "Cliente",
-    FILTER(
-        movidesk,
-        movidesk[aptDate] >= DATE(YEAR(TODAY()), MONTH(TODAY()), 1)
-            && movidesk[aptDate] < EOMONTH(TODAY(), 0) + 1
-    )
+    2
 )
