@@ -1,0 +1,5 @@
+HorasContratadasCliente = 
+CALCULATE(
+    SUM(contratos[ContratoHrs]),
+    contratos[cliente] = "Cliente"
+)
