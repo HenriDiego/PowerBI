@@ -1,0 +1,11 @@
+TicketsResolvidosCliente = 
+CALCULATE(
+    DISTINCTCOUNT(movidesk[id]),
+    movidesk[clientes] = "Cliente",
+    movidesk[aptDate] >= DATE(YEAR(TODAY()), MONTH(TODAY()), 1),
+    movidesk[aptDate] < EOMONTH(TODAY(), 0) + 1,
+    movidesk[status] IN {
+        "Resolvido",
+        "Fechado"
+    }
+)
