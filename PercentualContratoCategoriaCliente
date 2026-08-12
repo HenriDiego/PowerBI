@@ -1,0 +1,4 @@
+PercentualContratoCategoriaCliente = 
+DIVIDE(
+    [HorasGastasCliente] / 60,
+    [ContratoHorasCliente]
