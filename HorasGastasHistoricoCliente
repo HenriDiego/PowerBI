@@ -1,0 +1,12 @@
+HorasGastasHistoricoCliente = 
+CALCULATE(
+    SUMX(
+        movidesk,
+        DATEDIFF(
+            movidesk[aptStart],
+            movidesk[aptEnd],
+            MINUTE
+        )
+    ),
+    movidesk[clientes] = "Cliente"
+) / 60
