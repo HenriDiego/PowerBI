@@ -1,0 +1,11 @@
+QtdDeTicketsCliente = 
+VAR Resultado =
+    CALCULATE(
+        DISTINCTCOUNT(movidesk[id]),
+        movidesk[clientes] = "CLIENTE",
+        movidesk[aptDate] >= DATE(YEAR(TODAY()), MONTH(TODAY()), 1),
+        movidesk[aptDate] < EOMONTH(TODAY(), 0) + 1
+    )
+
+RETURN
+IF(Resultado = 0, BLANK(), Resultado)
